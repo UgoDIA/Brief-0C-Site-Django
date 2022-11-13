@@ -1,0 +1,148 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'chart.css' %}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.1.0/chartjs-plugin-datalabels.min.js" integrity="sha512-Tfw6etYMUhL4RTki37niav99C6OHwMDB2iBT5S5piyHO+ltK2YX8Hjy9TXxhE1Gm/TmAV0uaykSpnHKFIAif/A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+
+   
+    <div class="chart-container" >
+ <canvas id="myChart" style="width:500px;height:500px"></canvas>
+    </div>
+
+
+   
+
+<script>
+{% comment %}   {% regroup date in dates by dates|date:"Y d" as date1  %} {% endcomment %}
+
+ const labelx=['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin']   
+{% comment %}  const datay= [200, 221, 258, 282, 313, 325] {% endcomment %}
+ const datay2= [3,5,7,6,7,5]
+ const ctx = document.getElementById('myChart').getContext('2d');
+ const myChart = new Chart(ctx, {    
+    data: {
+        labels: [{% for date in dates%}'{{date}}', {%endfor%} ],
+        datasets: [{
+          type: 'bar',
+            label: 'Nombre de threads', 
+            data: {{nbThreads}},
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 2,
+            
+            yAxisID:'y' ,       
+           datalabels:{
+              color:'black',
+              anchor:'end',
+              align:'top',
+              font:{
+                weight:'bold',
+                size:15
+              },
+            } ,  
+        },  
+      {
+        type:'line',
+        label: 'Nombre de relevés',
+        data:{{nbRel}},
+        borderWidth: 5,
+        borderColor: 'rgb(58, 5, 17)',
+        backgroundColor: 'rgb(58, 5, 17)',
+        yAxisID:'y2',
+        datalabels:{
+          display:true,
+          color:'rgb(58, 5, 17)',
+          anchor:'start',
+          align:'bottom',
+          font:{
+            size:17,
+            weight:'bold'
+          },
+        } ,  
+      }]
+    },
+    options: {                  
+    
+    },
+   plugins: [ChartDataLabels],
+        options:{
+          plugins:{
+            /*     tooltip:{
+                  enabled:false
+                },   */
+                legend:{
+                  
+            display:false , 
+                  labels:{
+                    boxWidth:0
+                  }
+                }
+              },
+          scales: {
+            y2:{
+              title:{
+                display:true,
+                text:'Nombre de relevé',
+                font: {
+                  size: 20,
+                  weight: 'bold',        
+                }, 
+              },
+              beginAtZero:true,
+              position:'right',
+              suggestedMax:Math.max(...{{nbRel}})+5,
+              grid:{
+                display:false,
+              }
+            },
+            y:{
+              title:{
+                display:true,
+                text:'Nombre de Threads',
+                font: {
+                  size: 20,
+                  weight: 'bold',        
+                }, 
+              },
+                        
+            },
+          
+        }
+          
+        } 
+}); 
+</script>
+<div class="row text-end">
+  <div class="col">
+      <a type="button" class="btn btn-warning" href="../{{idProjet}}">Retour</a>
+  </div>
+</div>
+</body>
+</html>
+
+{% endblock %}

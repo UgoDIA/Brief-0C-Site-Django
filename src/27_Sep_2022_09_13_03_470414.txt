@@ -1,0 +1,27 @@
+URL de la page qui va être traitée: https://community.o2.co.uk/t5/Discussions-Feedback/bd-p/4
+nombre de post extrait du thread "community platform bugs, issues and suggestions": 34
+nombre de post extrait du thread "guide updates": 39
+nombre de post extrait du thread "o2 customer service/live chat positive feedback archive!": 112
+nombre de post extrait du thread "all incoming calls i d witheld": 2
+nombre de post extrait du thread "australia": 3
+nombre de post extrait du thread "customer services": 2
+nombre de post extrait du thread "wifi calling moto g31": 2
+nombre de post extrait du thread "fraud alert!": 17
+nombre de post extrait du thread "positive feedback": 6
+nombre de post extrait du thread "new to 02": 2
+nombre de post extrait du thread "poor service in store": 8
+nombre de post extrait du thread "esim qr code via email.": 6
+nombre de post extrait du thread "upgrade": 3
+Nombre de threads scrappé:13
+URL de la page qui va être traitée: https://community.o2.co.uk/t5/Discussions-Feedback/bd-p/4/page/2
+nombre de post extrait du thread "o2 data network unavailable for hours at a time at many popular summer leisure destinations": 15
+nombre de post extrait du thread "upgrade": 4
+nombre de post extrait du thread "customer feedback": 7
+nombre de post extrait du thread "considering my options after a stolen device": 9
+nombre de post extrait du thread "scam alert": 2
+nombre de post extrait du thread "court action": 2
+nombre de post extrait du thread "changes to 02 software": 3
+nombre de post extrait du thread "imei barred when phone lost. now its been found o2 cannot reinstate my network on my phones handset": 60
+nombre de post extrait du thread "board": 2
+nombre de post extrait du thread "o2 travel inclusive not working abroad": 7
+Nombre de threads scrappé:10

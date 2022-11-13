@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+{% block content %}
+<div class="py-2">
+  <table class="table">
+    <thead>
+      <tr class="text-center align-middle fs-5">
+        <th scope="col">Projet</th>
+        <th scope="col">Date du relevé</th>
+        <th scope="col">Etat du relevé</th>
+      </tr>
+    </thead>
+    <tbody class="table-group-divider">
+      {% for histo in histos %}
+        <tr class="text-center align-middle">
+          <th scope="col">{{histo.projetId}}</th>
+          {% language 'fr' %}
+          <th scope="col">{{histo.dateRel | date:"d F Y"}}</th>
+          {% endlanguage %}
+          {% if histo.status %}
+            <td><i class="bi bi-check-lg text-success" style="font-size: 25px; font-weight: bold;"></i></td>
+          {% else %}
+            <td><i class="bi bi-exclamation-triangle text-danger" style="font-size: 25px; font-weight: bold;"></i></td>
+          {% endif %}
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>  
+{% endblock %}

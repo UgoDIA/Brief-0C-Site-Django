@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h4>Créer votre compte</h4>
+
+{% for message in messages %}
+   <strong>{{message}}</strong> 
+{% endfor %}
+
+<form action="{% url 'register' %}" method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="username" class="form-label">Nom d'utilisateur :</label>
+        <input type="text" class="form-control" name="username" id="username" placeholder="Entrez votre nom d'utilisateur ..." required>
+    </div>
+    <div class="mb-3">
+        <label for="firstname" class="form-label">Prénom :</label>
+        <input type="text" class="form-control" name="firstname" id="firstname" placeholder="Entrez votre prénom ..." required>
+    </div>
+    <div class="mb-3">
+        <label for="lastname" class="form-label">Nom :</label>
+        <input type="text" class="form-control" name="lastname" id="lastname" placeholder="Entrez votre nom ..." required>
+    </div>
+    <div class="mb-3">
+        <label for="email" class="form-label">E-mail :</label>
+        <input type="email" class="form-control" name="email" id="email" placeholder="Entrez votre e-mail ..." required>
+    </div>
+    <div class="mb-3">
+        <label for="password" class="form-label">Mot de passe :</label>
+        <input type="password" class="form-control" name="password" id="password" placeholder="Entrez votre mot de passe ..." required>
+    </div>
+    <div class="mb-3">
+        <label for="password1" class="form-label">Confirmation mot de passe :</label>
+        <input type="password" class="form-control" name="password1" id="password1" placeholder="Confirmer votre mot de passe ..." required>
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Enregistrer</button>
+
+</form>
+    
+
+{% endblock %}
+

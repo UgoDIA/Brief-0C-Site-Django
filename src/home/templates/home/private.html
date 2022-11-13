@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+{% block content %}
+<div class="py-2">
+  <table class="table">
+    <thead>
+      <tr class="text-center align-middle fs-5">
+        <th scope="col">Projet</th>
+        <th scope="col">Date du dernier relevé</th>
+        <th scope="col">Etat du dernier relevé</th>
+        <th scope="col">Nombre total de relevés</th>
+      </tr>
+    </thead>
+    <tbody class="table-group-divider">
+      {% for projet,projetRel in histo %}
+        <tr class="text-center align-middle">
+          <th scope="col"><a href="dashboard/{{projet.projetId_id}}">{{projet.projetId}}</a></th>
+          {% language 'fr' %}
+          <th scope="col">{{projet.dateRel | date:"d F Y"}}</th>
+          {% endlanguage %}
+          {% if projet.status %}
+          <td><i class="bi bi-check-lg text-success" style="font-size: 25px; font-weight: bold;"></i></td>
+          {% else %}
+            <td><i class="bi bi-exclamation-triangle text-danger" style="font-size: 25px; font-weight: bold;"></i></td>
+          {% endif %}
+          <th scope="col">{{projetRel.hcount}}</th>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

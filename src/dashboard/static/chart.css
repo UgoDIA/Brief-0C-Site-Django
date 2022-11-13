@@ -1,0 +1,13 @@
+.chart-container{
+    display:block;
+    margin:0 auto;
+    position:relative;
+    height:500px; 
+    width:800px;
+}
+@media only screen and (max-width:900px) {
+    .chart-container{
+        width: 90%;
+        height:45%;
+    }
+}

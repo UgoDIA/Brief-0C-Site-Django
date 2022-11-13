@@ -1,0 +1,173 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load static %}
+<script src="{% static 'script_scrap.js' %}"></script>
+
+<div class="container text-center my-2">
+    <!-- Titre page -->
+    <div class="row">
+        <div class="col">
+            <h2>Projet : {{ projet.initial }}</h2>
+        </div>
+    </div>
+    <!-- Cartes -->
+    <div class="row">
+        <!-- Historique -->
+        <div class="col-md-6 col-sm-12 my-2">
+            <a href="./historique/{{projet.codePr}}" class="text-decoration-none">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            Historique
+                        </h5>
+                        <p class="card-text">
+                            <i class="bi-stopwatch" style="font-size: 2rem;"></i>
+                        </p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <!-- Graphique -->
+        <div class="col-md-6 col-sm-12 my-2">
+            <a href="./graph/{{projet.codePr}}" class="text-decoration-none">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            Graphique
+                        </h5>
+                        <p class="card-text">
+                            <i class="bi-bar-chart" style="font-size: 2rem;"></i>
+                        </p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <!-- Relevé -->
+        {% if statut != "En cours" %}
+        <!--<input href="releve/{{projet.codePr}}" type="button" value="Reload Page" onClick="window.location.reload(true)">
+        <a onclick="actualiser()">Refresh this page in 2 seconds</a>-->
+        <div class="col-md-6 col-sm-12 my-2" >
+            <a onclick="timedRefresh(1000)" href="releve/{{projet.codePr}}" class="text-decoration-none">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            Lancer le relevé
+                        </h5>
+                        <p class="card-text">
+                            <i class="bi bi-arrow-down-circle" style="font-size: 2rem;"></i>
+                        </p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% else %}
+
+        <div class="col-md-6 col-sm-12 my-2">
+            <a href="annulation/" class="text-decoration-none">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            Annuler le relevé
+                        </h5>
+                        <p class="card-text">
+                            <i class="bi bi-arrow-down-circle" style="font-size: 2rem;"></i>
+                        </p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        {% endif %}
+        <!-- Détails derniers relevés -->
+        <div class="col-md-6 col-sm-12 my-2">
+            <a href="details/" class="text-decoration-none">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            Détails derniers relevés
+                        </h5>
+                        <p class="card-text">
+                            <i class="bi bi-file-earmark-text" style="font-size: 2rem;"></i>
+                        </p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <p class="fs-3">Statut du relevé : {{statut}}</p>
+    
+    {% if statut == "En cours" %}
+    <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+    {% endif %}
+    <div class="row text-end">
+        <div class="col">
+            <a type="button" class="btn btn-warning" href="../">Retour</a>
+        </div>
+    </div>
+</div>
+
+<!-- <h2>Projet : {{ projet.initial }}</h2> -->
+
+<!-- Lien vers la page 'Historique' -->
+<!-- <a href="">Historique</a> -->
+<!-- <div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">
+            <a href="">Historique</a>
+        </h5>
+        <p class="card-text">
+            <i class="bi-stopwatch" style="font-size: 2rem; color: cornflowerblue;"></i>
+        </p>
+    </div>
+</div> -->
+
+<!-- Lien vers la page 'Graphique' -->
+<!-- <a href="">Graphique</a> -->
+<!-- <div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">
+            <a href="">Graphique</a>
+        </h5>
+        <p class="card-text">
+            <i class="bi-bar-chart" style="font-size: 2rem; color: cornflowerblue;"></i>
+        </p>
+    </div>
+</div> -->
+
+<!-- Bouton qui va lancer le SCRAP du projet affiché -->
+<!-- <button>Relevé</button> -->
+<!-- <div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">
+            <button type="button" class="btn btn-primary">
+                <a href="releve/">Relevé</a>
+            </button>
+        </h5>
+        <p class="card-text">
+            <i class="bi bi-arrow-down-circle" style="font-size: 2rem; color: cornflowerblue;"></i>
+        </p>
+    </div>
+</div> -->
+
+<!-- Lien vers la page 'Détails des derniers relevés' -->
+<!-- <a href="">Détails derniers relevés</a> -->
+<!-- <div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">
+            <a href="">Détails derniers relevés</a>
+        </h5>
+        <p class="card-text">
+            <i class="bi bi-file-earmark-text" style="font-size: 2rem; color: cornflowerblue;"></i>
+        </p>
+    </div>
+</div> -->
+
+<!-- Bouton de retour vers la page d'accueil privée -->
+<!-- <button> -->
+<!-- <a type="button" class="btn btn-warning" href="../">Retour</a> -->
+<!-- </button> -->
+{% endblock %}
